@@ -6,17 +6,18 @@
     </provider>
 
 <!-- Begin Entities -->
-<class>com.skilldistillery.trips.entities.trips</class>
-
+<class>com.skilldistillery.trips.entities.Trip</class>
+<class>com.skilldistillery.trips.entities.User</class>
+<class>com.skilldistillery.trips.entities.Expense</class>
 
 
 
 <!-- End Entities -->
 
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fishingtripsdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
-      <property name="javax.persistence.jdbc.user" value="trips"/>
-      <property name="javax.persistence.jdbc.password" value="trips" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fishingtriptrackerdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
+      <property name="javax.persistence.jdbc.user" value="admin"/>
+      <property name="javax.persistence.jdbc.password" value="admin" />
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 
       <property name="hibernate.show_sql" value="false" />
