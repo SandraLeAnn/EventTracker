@@ -9,7 +9,7 @@ public interface TripsService {
 	List<Trip> allTrips();
 	List<Trip> allTripsByUser(User user);
 	Trip getTripsById(int id);
-	Trip create(Trip name);
+	Trip create(Trip name, int userId);
 	Trip update(int id, Trip name);
 	boolean disableById(int id);
 }

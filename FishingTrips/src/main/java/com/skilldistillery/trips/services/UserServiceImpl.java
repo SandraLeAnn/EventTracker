@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
 	}
 	@Override
 	public User create(User user) {
+		System.out.println(user);
 		if (user != null) {
 			em.persist(user);
 		}

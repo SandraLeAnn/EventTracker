@@ -62,10 +62,25 @@ public class TripsServiceImpl implements TripsService {
 		return trip;
 	}
 
+	
+	
 	@Override
-	public Trip create(Trip trip) {
+	public Trip create(Trip trip, int userId) {
+		
+		Optional<User> userOP = userRepo.findById(userId);
+		User user = null;
+		if(userOP.isPresent()) {
+			user = userOP.get();
+			if (trip != null) {
+				trip.setUser(user);
+				em.persist(trip);
+				
+				
+				
 		if (trip != null) {
 			em.persist(trip);
+		}
+			}
 		}
 		return trip;
 	}
@@ -84,6 +99,7 @@ public class TripsServiceImpl implements TripsService {
 			existing.setTotalPrice(trip.getTotalPrice());
 			existing.setStartDate(trip.getStartDate());
 			existing.setEndDate(trip.getEndDate());
+			existing.setActive(trip.isActive());
 //			existing.setUser(trip.getUser());
 			em.flush();
 			return existing;

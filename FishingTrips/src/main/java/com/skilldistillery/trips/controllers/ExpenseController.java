@@ -19,19 +19,19 @@ import com.skilldistillery.trips.services.ExpenseService;
 
 
 @RestController
-@RequestMapping
+@RequestMapping("api")
 public class ExpenseController {
 
 	@Autowired
 	private ExpenseService exp;
 	
-	@GetMapping("expense")
+	@GetMapping("expenses")
 	public List<Expense> allExpenses(){
 		return exp.allExpenses();
 	}
 
 
-	@GetMapping("expense/{id}")
+	@GetMapping("expenses/{id}")
 	public Expense getExpense(@PathVariable Integer id, HttpServletResponse resp) {
 		Expense expense = exp.getExpenseById(id);
 		if (expense == null) {
@@ -40,12 +40,12 @@ public class ExpenseController {
 		return expense;
 	}
 	
-	@PostMapping("expense")
-	public Expense createExpense(@RequestBody Expense expense, HttpServletResponse resp, HttpServletRequest req) {
+	@PostMapping("expenses/{tripId}")
+	public Expense createExpense(@RequestBody Expense expense,@PathVariable("tripId") int tripId, HttpServletResponse resp, HttpServletRequest req) {
 		Expense newExpense= null;
 		
 		try {
-			newExpense = exp.create(expense);
+			newExpense = exp.create(expense, tripId);
 			resp.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(expense.getId());
@@ -58,7 +58,7 @@ public class ExpenseController {
 		return newExpense;
 }
 
-	@PutMapping("expense/{id}")
+	@PutMapping("expenses/{id}")
 	public Expense updateExpense(@PathVariable("id") Integer expenseId, @RequestBody Expense expense, HttpServletResponse resp) {
 		Expense editExpense = null;
 		
@@ -78,7 +78,7 @@ public class ExpenseController {
 		
 	}
 	
-	@PutMapping("expense/delete/{id}")
+	@PutMapping("expenses/delete/{id}")
 	public boolean disableExpense(@PathVariable("id") Integer expenseId, @RequestBody Expense expense, HttpServletResponse resp) {
 		boolean deleted = false;
 		try {

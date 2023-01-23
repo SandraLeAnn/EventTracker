@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 	public class Trip {
 		
@@ -44,6 +46,7 @@ import javax.persistence.OneToMany;
 		@JoinColumn(name = "user_id")
 		private User user;
 		
+		@JsonIgnore
 		@OneToMany(mappedBy = "trip")
 		private List<Expense> expenses;
 		

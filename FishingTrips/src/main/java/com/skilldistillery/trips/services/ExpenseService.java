@@ -8,7 +8,7 @@ public interface ExpenseService {
 	List<Expense> allExpenses();
 	List<Expense> findAllExpensesBytripId(int tripId);
 	Expense getExpenseById(int id);
-	Expense create(Expense expense);
+	Expense create(Expense expense, int tripId);
 	Expense update(int id, Expense expense);
 	boolean disableById(int id);
 }

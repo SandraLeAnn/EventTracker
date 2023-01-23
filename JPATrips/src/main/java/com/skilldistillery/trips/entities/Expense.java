@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Expense {
 	@Id
@@ -30,6 +32,7 @@ public class Expense {
 	private String location;
 	
 	private boolean active;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "trip_id")

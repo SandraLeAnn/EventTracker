@@ -18,7 +18,7 @@ import com.skilldistillery.trips.entities.Trip;
 import com.skilldistillery.trips.services.TripsServiceImpl;
 
 @RestController
-@RequestMapping
+@RequestMapping("api")
 public class TripsController {
 	
 	@Autowired
@@ -39,12 +39,14 @@ public class TripsController {
 		return trip;
 	}
 	
-	@PostMapping("trips")
-	public Trip createTrip(@RequestBody Trip trip, HttpServletResponse resp, HttpServletRequest req) {
+	
+	
+	@PostMapping("trips/{userId}")
+	public Trip createTrip(@RequestBody Trip trip, @PathVariable("userId")int userId, HttpServletResponse resp, HttpServletRequest req) {
 		Trip newTrip = null;
 		
 		try {
-			newTrip = tripServ.create(trip);
+			newTrip = tripServ.create(trip, userId);
 			resp.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(trip.getId());

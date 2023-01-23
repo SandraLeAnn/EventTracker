@@ -59,9 +59,18 @@ public class ExpenseServiceImpl implements ExpenseService {
 		return expense;
 	}
 	@Override
-	public Expense create(Expense expense) {
-		if (expense != null) {
-			em.persist(expense);
+	public Expense create(Expense expense, int tripId) {
+		Optional<Trip> tripOP = tripRepo.findById(tripId);
+		Trip trip = null;
+		if(tripOP.isPresent()) {
+			trip = tripOP.get();
+			if (expense != null) {
+				expense.setTrip(trip);
+				em.persist(expense);
+				
+				
+				
+			}
 		}
 		return expense;
 	}
@@ -79,6 +88,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 			existing.setImage(expense.getImage());
 			existing.setPrice(expense.getPrice());
 			existing.setDate(expense.getDate());
+			existing.setActive(expense.isActive());
 			//existing.setUserId(trip.getUserId());
 			em.flush();
 			return existing;

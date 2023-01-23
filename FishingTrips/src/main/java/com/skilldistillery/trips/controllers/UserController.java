@@ -19,7 +19,7 @@ import com.skilldistillery.trips.services.UserServiceImpl;
 
 
 @RestController
-@RequestMapping
+@RequestMapping("api")
 public class UserController {
 
 	@Autowired
