@@ -5,15 +5,15 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema fishingtriptrackerdb
+-- Schema fishingtripsdb
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `fishingtriptrackerdb` ;
+DROP SCHEMA IF EXISTS `fishingtripsdb` ;
 
 -- -----------------------------------------------------
--- Schema fishingtriptrackerdb
+-- Schema fishingtripsdb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `fishingtriptrackerdb` DEFAULT CHARACTER SET utf8 ;
-USE `fishingtriptrackerdb` ;
+CREATE SCHEMA IF NOT EXISTS `fishingtripsdb` DEFAULT CHARACTER SET utf8 ;
+USE `fishingtripsdb` ;
 
 -- -----------------------------------------------------
 -- Table `user`
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `image_url` VARCHAR(45) NULL,
   `role` VARCHAR(45) NULL,
   `active` TINYINT NULL,
-  `email` VARCHAR(45) NULL,
+  `email` VARCHAR(200) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC))
 ENGINE = InnoDB;
@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `trip` (
   `end_date` DATETIME NULL,
   `image_url` TEXT NULL,
   `user_id` INT NOT NULL,
+  `active` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_trip_user_idx` (`user_id` ASC),
   CONSTRAINT `fk_trip_user`
@@ -74,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `expense` (
   `price` DOUBLE NULL,
   `location` VARCHAR(45) NULL,
   `trip_id` INT NOT NULL,
+  `active` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_expense_trip1_idx` (`trip_id` ASC),
   CONSTRAINT `fk_expense_trip1`
@@ -98,7 +100,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `fishingtriptrackerdb`;
+USE `fishingtripsdb`;
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `username`, `password`, `image_url`, `role`, `active`, `email`) VALUES (1, 'Sandra', 'Harpole', 'admin', 'admin', NULL, 'admin', 1, 'slharpole14@gmail.com');
 
 COMMIT;
@@ -108,8 +110,8 @@ COMMIT;
 -- Data for table `trip`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `fishingtriptrackerdb`;
-INSERT INTO `trip` (`id`, `name`, `description`, `location`, `total_price`, `start_date`, `end_date`, `image_url`, `user_id`) VALUES (1, 'New Zealand Fishing Trip', 'I had an amazing time and caught so many rainbow trout', 'Auckland, NZ', 15000, NULL, NULL, NULL, 1);
+USE `fishingtripsdb`;
+INSERT INTO `trip` (`id`, `name`, `description`, `location`, `total_price`, `start_date`, `end_date`, `image_url`, `user_id`, `active`) VALUES (1, 'New Zealand Fishing Trip', 'I had an amazing time and caught so many rainbow trout', 'Auckland, NZ', 15000, NULL, NULL, NULL, 1, 1);
 
 COMMIT;
 
@@ -118,8 +120,8 @@ COMMIT;
 -- Data for table `expense`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `fishingtriptrackerdb`;
-INSERT INTO `expense` (`id`, `name`, `description`, `date`, `image_url`, `price`, `location`, `trip_id`) VALUES (1, 'Guided Rafting Fishing Trip', 'so much fun', NULL, NULL, 1500, NULL, 1);
+USE `fishingtripsdb`;
+INSERT INTO `expense` (`id`, `name`, `description`, `date`, `image_url`, `price`, `location`, `trip_id`, `active`) VALUES (1, 'Guided Rafting Fishing Trip', 'so much fun', NULL, NULL, 1500, NULL, 1, 1);
 
 COMMIT;
 
