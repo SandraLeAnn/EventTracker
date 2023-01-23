@@ -32,7 +32,7 @@
 
 
 <p>
-
+This project tracks a users fishing and travel experiences across the globe. A user has the ability to create a travel experience and the expenses associated with it. They are also able to update and delete their experiences and expenses as well as their personal profile.
  </p>
 
 
@@ -40,38 +40,30 @@
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Technologies Used
-- 
 -   [Eclipse](https://spring.io/tools)
 -   [Atom Text Editor](https://atom.io/)
 -   [Java](https://www.java.com/en/)
 -   [GITHUB](https://github.com)
--   [Debugger-Oracle](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/jdb.html)  
+-   JSON
+-   Javascript  
+-   REST
+-   MySQL
+-   Repositories
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## How It Works
 
-
-
 <p>
-
+The event tracker I created is specific to tracking a users fishing/travel habits and expenses associated with it.
+This event tracker uses repositories in combination with services to avoid needing to used jpql queries in order to find data within the database. I implemented optional to locate an object by id. Which was then used in various crud operations for each entity. I used json in my postman to test the database connection and crud operations across all entities. While testing mapping with postman I had to use json ignore within my entities in order to prevent serialization. At this time the event tracker is successfully preforming full crud.
 </P>
-<ol>
 
-
-<li>
-
-<li>
-
-
-</li>
-
-</ol>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## What I Learned
 <p>
-
+This project has helped me gain a better understanding of repositories and the how to use repositories in combination with services. Using postman to test my mapping connection helped me recognize errors within my code and where to fix them. Using postman for this project allowed my to gain more experience using it and testing data using json requests to send and receive data to the database.
 </p>
 
 
@@ -94,14 +86,4 @@ LinkedIn
 
 Project Link: [EventTrackerProject](https://github.com/SandraLeAnn/EventTracker)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-
--   [Stack Overflow](https://stackoverflow.com/)
--   [W3 Schools](https://www.w3schools.com/)
--   [Google](https://www.google.com/)
 <p align="right">(<a href="#top">back to top</a>)</p>
