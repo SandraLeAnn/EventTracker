@@ -59,6 +59,25 @@ The event tracker I created is specific to tracking a users fishing/travel habit
 This event tracker uses repositories in combination with services to avoid needing to used jpql queries in order to find data within the database. I implemented optional to locate an object by id. Which was then used in various crud operations for each entity. I used json in my postman to test the database connection and crud operations across all entities. While testing mapping with postman I had to use json ignore within my entities in order to prevent serialization. At this time the event tracker is successfully preforming full crud.
 </P>
 
+| HTTP Verb | URI                  | Request Body | Response Body | Purpose |
+|-----------|----------------------|--------------|---------------|---------|
+| GET       | `/api/trips`     |              | Collection of representations of all trips  | **List** or **collection** endpoint |
+| GET       | `/api/trips/1`   |              | Representation of trip `1` | **Retrieve** endpoint |
+| POST      | `/api/trips/1`     | Representation of a new trip | New trip created | **Create** endpoint |
+| PUT       | `/api/trip/1`   | Representation of a  trip `1` | Updates trip with ID `1`| **Replace** endpoint |
+| PUT       | `/api/trip/delete/1`   | Representation of a  trip `1` | Disables trip with ID `1`| **Replace** endpoint |
+| GET       | `/api/user`     |              | Collection of representations of all user  | **List** or **collection** endpoint |
+| GET       | `/api/user/1`   |              | Representation of user with ID `1` | **Retrieve** endpoint |
+| POST      | `/api/user/1`     | Representation of a new user | New user created | **Create** endpoint |
+| PUT       | `/api/user/1`   | Representation of a  user `1` | Updates user with ID `1`| **Replace** endpoint |
+| PUT       | `/api/user/delete/1`   | Representation of a  user `1` | Disables user with ID `1`| **Replace** endpoint |
+| GET       | `/api/expenses`     |              | Collection of representations of all expenses  | **List** or **collection** endpoint |
+| GET       | `/api/expenses/1`   |              | Representation of expenses with ID `1` | **Retrieve** endpoint |
+| POST      | `/api/expenses/1`     | Representation of a new expense | New expenses created | **Create** endpoint |
+| PUT       | `/api/expenses/1`   | Representation of a  expenses with ID `1` | Updates expense with ID `1`| **Replace** endpoint |
+| PUT       | `/api/expenses/delete/1`   | Representation of a  expense with ID `1` | Disables expense with ID `1`| **Replace** endpoint |
+
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## What I Learned
