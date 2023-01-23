@@ -43,7 +43,6 @@ public class ExpenseTest {
 
 	@Test
 	void test_Expense_entity_mapping() {
-//mysql> select * from expense;
 //+----+-----------------------------+-------------+------+-----------+-------+----------+---------+
 //| id | name                        | description | date | image_url | price | location | trip_id |
 //+----+-----------------------------+-------------+------+-----------+-------+----------+---------+
@@ -54,4 +53,14 @@ public class ExpenseTest {
 		assertEquals("Guided Rafting Fishing Trip", exp.getName());
 		
 }
+	@Test
+	void test_expense_relationship_to_trip_entity_mapping() {
+//		+----+--------------------------+--------------------------------------------------------+--------------+-------------+------------+----------+-----------+---------+--------+
+//		| id | name                     | description                                            | location     | total_price | start_date | end_date | image_url | user_id | active |
+//		+----+--------------------------+--------------------------------------------------------+--------------+-------------+------------+----------+-----------+---------+--------+
+//		|  1 | New Zealand Fishing Trip | I had an amazing time and caught so many rainbow trout | Auckland, NZ |       15000 | NULL       | NULL     | NULL      |       1 |      1 |
+//		+----+--------------------------+--------------------------------------------------------+--------------+-------------+------------+----------+-----------+---------+--------+
+		assertNotNull(exp);
+		assertEquals("New Zealand Fishing Trip", exp.getTrip().getName());
+	}
 }

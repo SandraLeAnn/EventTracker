@@ -2,6 +2,7 @@ package com.skilldistillery.trips.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -52,5 +53,10 @@ public class UserTest {
 		assertNotNull(user);
 		assertEquals("Sandra", user.getFirstName());
 //
+}
+	@Test
+	void test_user_relationship_trip_entity_mapping() {
+		assertNotNull(user);
+		assertTrue(user.getTrips().size() > 0);
 }
 }
