@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Expense {
@@ -27,11 +29,22 @@ public class Expense {
 	
 	private String location;
 	
-	@Column(name = "trip_id")
-	private int tripId;
+	private boolean active;
+	
+	@ManyToOne
+	@JoinColumn(name = "trip_id")
+	private Trip trip;
 
 	public Expense() {
 		super();
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public int getId() {
@@ -90,24 +103,30 @@ public class Expense {
 		this.location = location;
 	}
 
-	public int getTripId() {
-		return tripId;
+	public Trip getTrip() {
+		return trip;
 	}
 
-	public void setTripId(int tripId) {
-		this.tripId = tripId;
+	public void setTrip(Trip trip) {
+		this.trip = trip;
 	}
+
+
 
 	@Override
 	public String toString() {
 		return "Expense [id=" + id + ", name=" + name + ", description=" + description + ", date=" + date + ", image="
-				+ image + ", price=" + price + ", location=" + location + ", tripId=" + tripId + "]";
+				+ image + ", price=" + price + ", location=" + location + ", active=" + active + ", trip=" + trip + "]";
 	}
+
+
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(date, description, id, image, location, name, price, tripId);
+		return Objects.hash(active, date, description, id, image, location, name, price, trip);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -118,16 +137,12 @@ public class Expense {
 		if (getClass() != obj.getClass())
 			return false;
 		Expense other = (Expense) obj;
-		return Objects.equals(date, other.date) && Objects.equals(description, other.description) && id == other.id
+		return active == other.active && Objects.equals(date, other.date)
+				&& Objects.equals(description, other.description) && id == other.id
 				&& Objects.equals(image, other.image) && Objects.equals(location, other.location)
-				&& Objects.equals(name, other.name) && price == other.price && tripId == other.tripId;
+				&& Objects.equals(name, other.name) && price == other.price && Objects.equals(trip, other.trip);
 	}
 
-	
-//mysql> select * from expense;
-//+----+-----------------------------+-------------+------+-----------+-------+----------+---------+
-//| id | name                        | description | date | image_url | price | location | trip_id |
-//+----+-----------------------------+-------------+------+-----------+-------+----------+---------+
-//|  1 | Guided Rafting Fishing Trip | so much fun | NULL | NULL      |  1500 | NULL     |       1 |
-//+----+-----------------------------+-------------+------+-----------+-------+----------+---------+
+
+
 }

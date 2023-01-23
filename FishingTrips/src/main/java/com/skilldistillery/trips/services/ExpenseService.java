@@ -6,6 +6,7 @@ import com.skilldistillery.trips.entities.Expense;
 
 public interface ExpenseService {
 	List<Expense> allExpenses();
+	List<Expense> findAllExpensesBytripId(int tripId);
 	Expense getExpenseById(int id);
 	Expense create(Expense expense);
 	Expense update(int id, Expense expense);

@@ -53,5 +53,10 @@ class TripTest {
 		assertNotNull(trip);
 		assertEquals("New Zealand Fishing Trip", trip.getName());
 	}
-
+//	@Test
+//	void test_trip_relationship_to_user_entity_mapping() {
+//		
+//		assertNotNull(trip);
+//		assertEquals("Sandra", trip.getUser().getFirstName());
+//	}
 }

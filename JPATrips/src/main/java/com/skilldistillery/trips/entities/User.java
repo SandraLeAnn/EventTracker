@@ -1,5 +1,6 @@
 package com.skilldistillery.trips.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 @Entity
 public class User {
 	@Id
@@ -30,9 +32,20 @@ public class User {
 	private boolean active;
 	
 	private String email;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Trip> trips;
 
 	public User() {
 		super();
+	}
+	
+	public List<Trip> getTrips() {
+		return trips;
+	}
+
+	public void setTrips(List<Trip> trips) {
+		this.trips = trips;
 	}
 
 	public int getId() {
@@ -107,16 +120,18 @@ public class User {
 		this.email = email;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
 				+ ", password=" + password + ", image=" + image + ", role=" + role + ", active=" + active + ", email="
-				+ email + "]";
+				+ email + ", trips=" + trips + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(active, email, firstName, id, image, lastName, password, role, username);
+		return Objects.hash(active, email, firstName, id, image, lastName, password, role, trips, username);
 	}
 
 	@Override
@@ -131,17 +146,10 @@ public class User {
 		return active == other.active && Objects.equals(email, other.email)
 				&& Objects.equals(firstName, other.firstName) && id == other.id && Objects.equals(image, other.image)
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
-				&& Objects.equals(role, other.role) && Objects.equals(username, other.username);
+				&& Objects.equals(role, other.role) && Objects.equals(trips, other.trips)
+				&& Objects.equals(username, other.username);
 	}
-	
-//	mysql> select * from user where id = 1;
-//	+----+------------+-----------+----------+----------+-----------+-------+--------+-----------------------+
-//	| id | first_name | last_name | username | password | image_url | role  | active | email                 |
-//	+----+------------+-----------+----------+----------+-----------+-------+--------+-----------------------+
-//	|  1 | Sandra     | Harpole   | admin    | admin    | NULL      | admin |      1 | slharpole14@gmail.com |
-//	+----+------------+-----------+----------+----------+-----------+-------+--------+-----------------------+
-//
 
-	
+
 
 }

@@ -1,6 +1,7 @@
 package com.skilldistillery.trips.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 	public class Trip {
@@ -33,10 +37,31 @@ import javax.persistence.Id;
 		
 		@Column(name ="image_url")
 		private String image;
-
+		
+		private boolean active;
+		
+		@ManyToOne
+		@JoinColumn(name = "user_id")
+		private User user;
+		
+		@OneToMany(mappedBy = "trip")
+		private List<Expense> expenses;
+		
+		
 		public Trip() {
 			super();
 		}
+
+		
+		public User getUser() {
+			return user;
+		}
+
+
+		public void setUser(User user) {
+			this.user = user;
+		}
+
 
 		public int getId() {
 			return id;
@@ -101,18 +126,41 @@ import javax.persistence.Id;
 		public void setImage(String image) {
 			this.image = image;
 		}
+		
+
+		public boolean isActive() {
+			return active;
+		}
+
+		public void setActive(boolean active) {
+			this.active = active;
+		}
+
+		
+		public List<Expense> getExpenses() {
+			return expenses;
+		}
+
+
+		public void setExpenses(List<Expense> expenses) {
+			this.expenses = expenses;
+		}
+
 
 		@Override
 		public String toString() {
 			return "Trip [id=" + id + ", name=" + name + ", Description=" + Description + ", location=" + location
 					+ ", totalPrice=" + totalPrice + ", startDate=" + startDate + ", endDate=" + endDate + ", image="
-					+ image + "]";
+					+ image + ", active=" + active + ", user=" + user + ", expenses=" + expenses + "]";
 		}
+
 
 		@Override
 		public int hashCode() {
-			return Objects.hash(Description, endDate, id, image, location, name, startDate, totalPrice);
+			return Objects.hash(Description, active, endDate, expenses, id, image, location, name, startDate,
+					totalPrice, user);
 		}
+
 
 		@Override
 		public boolean equals(Object obj) {
@@ -123,15 +171,13 @@ import javax.persistence.Id;
 			if (getClass() != obj.getClass())
 				return false;
 			Trip other = (Trip) obj;
-			return Objects.equals(Description, other.Description) && Objects.equals(endDate, other.endDate)
+			return Objects.equals(Description, other.Description) && active == other.active
+					&& Objects.equals(endDate, other.endDate) && Objects.equals(expenses, other.expenses)
 					&& id == other.id && Objects.equals(image, other.image) && Objects.equals(location, other.location)
 					&& Objects.equals(name, other.name) && Objects.equals(startDate, other.startDate)
-					&& totalPrice == other.totalPrice;
+					&& totalPrice == other.totalPrice && Objects.equals(user, other.user);
 		}
-		
-//		
-//		@Column(name ="user_id")
-//		private String userID;
-		
 
+
+	
 }
