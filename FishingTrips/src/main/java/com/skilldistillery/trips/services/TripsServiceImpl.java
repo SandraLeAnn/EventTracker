@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.trips.entities.Trip;
-import com.skilldistillery.trips.entities.User;
 import com.skilldistillery.trips.repositories.TripRepository;
-import com.skilldistillery.trips.repositories.UserRepository;
 
 @Service
 @Transactional
@@ -25,31 +23,11 @@ public class TripsServiceImpl implements TripsService {
 	@Autowired
 	private TripRepository tripsRepo;
 
-	@Autowired
-	private UserRepository userRepo;
-
 	@Override
 	public List<Trip> allTrips() {
 		return tripsRepo.findAll();
 	}
 
-	@Override
-	public List<Trip> allTripsByUser(User user) {
-		List<Trip> usersTrips = null;
-		User currentUser = null;
-		Optional<User> userOP = userRepo.findById(user.getId());
-
-		if (user != null) {
-			if (userOP.isPresent()) {
-				currentUser = userOP.get();
-
-			 usersTrips = currentUser.getTrips();
-			}
-
-		}
-		return usersTrips;
-//		return tripsRepo.findAll();
-	}
 
 	@Override
 	public Trip getTripsById(int id) {
@@ -65,23 +43,12 @@ public class TripsServiceImpl implements TripsService {
 	
 	
 	@Override
-	public Trip create(Trip trip, int userId) {
+	public Trip create(Trip trip) {
 		
-		Optional<User> userOP = userRepo.findById(userId);
-		User user = null;
-		if(userOP.isPresent()) {
-			user = userOP.get();
-			if (trip != null) {
-				trip.setUser(user);
-				em.persist(trip);
-				
-				
-				
 		if (trip != null) {
 			em.persist(trip);
 		}
-			}
-		}
+	
 		return trip;
 	}
 

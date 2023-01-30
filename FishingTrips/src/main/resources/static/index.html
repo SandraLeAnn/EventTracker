@@ -2,10 +2,84 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Travel Location</title>
-<script type="text/javascript" src="script.js"></script>
+<title>Travel</title>
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-<h1>Let's travel!</h1>
+	<h1>Travel Center</h1>
+
+
+		<table id="tripTable">
+			<!-- <thead>
+				<tr>
+					<th>Trip Name</th>
+					<th>Trip Description</th>
+					<th>Trip Location</th>
+					<th>Trip Total Price</th>
+					<th>Trip Start Date</th>
+					<th>Trip End Date</th>
+			
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody> -->
+		</table>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+	<div id="TripDetails">
+
+	</div>
+	
+	<div id="detailDiv">
+
+	</div>
+
+	
+
+	
+
+		<form name="newTripForm" >
+			<h2>Create Trip</h2>
+			<label>Name: </label>
+			<input type="text" name="name"><br>
+			<br> <label>Description: </label>
+			<input type="text"name="description"><br>
+			<br> 
+            <label>Location: </label>
+			<input type="text"name="location"><br>
+			<br>
+            <label>Total Price: </label>
+			<input type="text"name="totalPrice"><br>
+			<br>
+        
+            <label>Start Date: </label>
+			<input type="text"name="startDate"><br>
+			<br> <label>End Date: </label>
+			<input type="text" name="endDate"><br>
+			<br>
+            <label>Image: </label>
+			<input type="text"name="image"><br>
+			<br>
+		
+			<input type="text"name="active" type="hidden" value="true"><br>
+			<br>
+            
+			<button type="button" name="submit" value="submit">Submit</button>
+
+		</form>
+
+
+
+
+	
 </body>
 </html>
+

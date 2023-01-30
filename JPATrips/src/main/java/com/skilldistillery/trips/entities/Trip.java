@@ -1,6 +1,6 @@
 package com.skilldistillery.trips.entities;
 
-import java.time.LocalDateTime;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -32,19 +32,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		private int totalPrice;
 		
 		@Column(name = "start_date")
-		private LocalDateTime startDate;
+		private String startDate;
 		
 		@Column(name = "end_date")
-		private LocalDateTime endDate;
+		private String endDate;
 		
 		@Column(name ="image_url")
 		private String image;
 		
 		private boolean active;
 		
-		@ManyToOne
-		@JoinColumn(name = "user_id")
-		private User user;
 		
 		@JsonIgnore
 		@OneToMany(mappedBy = "trip")
@@ -55,15 +52,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			super();
 		}
 
-		
-		public User getUser() {
-			return user;
-		}
-
-
-		public void setUser(User user) {
-			this.user = user;
-		}
 
 
 		public int getId() {
@@ -106,21 +94,31 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			this.totalPrice = totalPrice;
 		}
 
-		public LocalDateTime getStartDate() {
+	
+
+		public String getStartDate() {
 			return startDate;
 		}
 
-		public void setStartDate(LocalDateTime startDate) {
+
+
+		public void setStartDate(String startDate) {
 			this.startDate = startDate;
 		}
 
-		public LocalDateTime getEndDate() {
+
+
+		public String getEndDate() {
 			return endDate;
 		}
 
-		public void setEndDate(LocalDateTime endDate) {
+
+
+		public void setEndDate(String endDate) {
 			this.endDate = endDate;
 		}
+
+
 
 		public String getImage() {
 			return image;
@@ -150,19 +148,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		}
 
 
+
 		@Override
 		public String toString() {
 			return "Trip [id=" + id + ", name=" + name + ", Description=" + Description + ", location=" + location
 					+ ", totalPrice=" + totalPrice + ", startDate=" + startDate + ", endDate=" + endDate + ", image="
-					+ image + ", active=" + active + ", user=" + user + ", expenses=" + expenses + "]";
+					+ image + ", active=" + active + ", expenses=" + expenses + "]";
 		}
+
 
 
 		@Override
 		public int hashCode() {
 			return Objects.hash(Description, active, endDate, expenses, id, image, location, name, startDate,
-					totalPrice, user);
+					totalPrice);
 		}
+
 
 
 		@Override
@@ -178,8 +179,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 					&& Objects.equals(endDate, other.endDate) && Objects.equals(expenses, other.expenses)
 					&& id == other.id && Objects.equals(image, other.image) && Objects.equals(location, other.location)
 					&& Objects.equals(name, other.name) && Objects.equals(startDate, other.startDate)
-					&& totalPrice == other.totalPrice && Objects.equals(user, other.user);
+					&& totalPrice == other.totalPrice;
 		}
+
 
 
 	

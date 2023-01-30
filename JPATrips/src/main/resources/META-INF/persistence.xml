@@ -7,7 +7,6 @@
 
 <!-- Begin Entities -->
 <class>com.skilldistillery.trips.entities.Trip</class>
-<class>com.skilldistillery.trips.entities.User</class>
 <class>com.skilldistillery.trips.entities.Expense</class> 
 
 

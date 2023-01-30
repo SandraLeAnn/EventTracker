@@ -41,12 +41,12 @@ public class TripsController {
 	
 	
 	
-	@PostMapping("trips/{userId}")
-	public Trip createTrip(@RequestBody Trip trip, @PathVariable("userId")int userId, HttpServletResponse resp, HttpServletRequest req) {
+	@PostMapping("trips")
+	public Trip createTrip(@RequestBody Trip trip, HttpServletResponse resp, HttpServletRequest req) {
 		Trip newTrip = null;
 		
 		try {
-			newTrip = tripServ.create(trip, userId);
+			newTrip = tripServ.create(trip);
 			resp.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(trip.getId());
@@ -59,7 +59,7 @@ public class TripsController {
 		return newTrip;
 }
 
-	@PutMapping("trip/{id}")
+	@PutMapping("trips/{id}")
 	public Trip updateTrip(@PathVariable("id") Integer tripId, @RequestBody Trip trip, HttpServletResponse resp) {
 	Trip editTrip = null;
 		

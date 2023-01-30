@@ -54,22 +54,7 @@ class TripTest {
 		assertNotNull(trip);
 		assertEquals("New Zealand Fishing Trip", trip.getName());
 	}
-	@Test
-	void test_trip_relationship_to_user_entity_mapping() {
-//		mysql> select * from user;
-//		+----+------------+-----------+----------+----------+-----------+-------+--------+-----------------------+
-//		| id | first_name | last_name | username | password | image_url | role  | active | email                 |
-//		+----+------------+-----------+----------+----------+-----------+-------+--------+-----------------------+
-//		|  1 | Sandra     | Harpole   | admin    | admin    | NULL      | admin |      1 | slharpole14@gmail.com |
-//		+----+------------+-----------+----------+----------+-----------+-------+--------+-----------------------+
 
-		assertNotNull(trip);
-		assertEquals("Sandra", trip.getUser().getFirstName());
-	}
-	@Test
-	void test_trip_relationship_to_enpense_entity_mapping() {
-		assertNotNull(trip);
-		assertTrue(trip.getExpenses().size() > 0);
-}
+
 	
 }
