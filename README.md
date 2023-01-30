@@ -66,11 +66,7 @@ This event tracker uses repositories in combination with services to avoid needi
 | POST      | `/api/trips/1`     | Representation of a new trip | New trip created | **Create** endpoint |
 | PUT       | `/api/trip/1`   | Representation of a  trip `1` | Updates trip with ID `1`| **Replace** endpoint |
 | PUT       | `/api/trip/delete/1`   | Representation of a  trip `1` | Disables trip with ID `1`| **Replace** endpoint |
-| GET       | `/api/user`     |              | Collection of representations of all user  | **List** or **collection** endpoint |
-| GET       | `/api/user/1`   |              | Representation of user with ID `1` | **Retrieve** endpoint |
-| POST      | `/api/user/1`     | Representation of a new user | New user created | **Create** endpoint |
-| PUT       | `/api/user/1`   | Representation of a  user `1` | Updates user with ID `1`| **Replace** endpoint |
-| PUT       | `/api/user/delete/1`   | Representation of a  user `1` | Disables user with ID `1`| **Replace** endpoint |
+
 | GET       | `/api/expenses`     |              | Collection of representations of all expenses  | **List** or **collection** endpoint |
 | GET       | `/api/expenses/1`   |              | Representation of expenses with ID `1` | **Retrieve** endpoint |
 | POST      | `/api/expenses/1`     | Representation of a new expense | New expenses created | **Create** endpoint |
