@@ -113,10 +113,27 @@ function displayTrips(tripsList){
 	}
 }
 
+	let agDiv = document.getElementById('agDiv');
 
-	let tripAmount = tripsList.length;
+
 	let h1 = document.createElement('h1');
-	h1.textContent = "Number of trips " + tripAmount;
+		let count = 0
+	for(let trip of tripsList) {
+		if(trip.active == true){
+		count = count + 1;
+		
+		}
+	
+	}
+	h1.textContent = "Number of trips " + count;
+		agDiv.appendChild(h1);
+	console.log(tripAmount);
+	
+	
+	
+	
+	
+	
 }
 
 	function displayTripDetails(trip){
