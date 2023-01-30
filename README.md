@@ -32,7 +32,7 @@
 
 
 <p>
-This project tracks a users fishing and travel experiences across the globe. A user has the ability to create a travel experience and the expenses associated with it. They are also able to update and delete their experiences and expenses as well as their personal profile.
+This project tracks fishing and travel experiences across the globe. A user has the ability to create a travel experience and the expenses associated with it. They are also able to update and delete their experiences.
  </p>
 
 
@@ -83,6 +83,7 @@ This event tracker uses repositories in combination with services to avoid needi
 ## What I Learned
 <p>
 This project has helped me gain a better understanding of repositories and the how to use repositories in combination with services. Using postman to test my mapping connection helped me recognize errors within my code and where to fix them. Using postman for this project allowed my to gain more experience using it and testing data using json requests to send and receive data to the database.
+As this project progresses I have been able to create a javascript frontend that has helped me gain a better understanding of javascript and how to implement it in my program.
 </p>
 
 
