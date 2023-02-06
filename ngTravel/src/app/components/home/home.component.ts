@@ -155,6 +155,29 @@ disableTrip(id: number, trip: Trip){
   }
 
 
+  // addExpense(newExpense : Expense, tripId : number){
+  //   this.TripsService.create(newExpense, tripId).subscribe(
+  //   success=>{
+  //     this.reload();
+  //     this.newExpense = new Expense();
+  //   },
+  //   error => console.log("Adding Oberservable got an error")
+  //   );
+  //   }
+
+  // addExpense(expense: Expense, tripId: number){
+  //   this.ExpenseService.create(expense,tripId).subscribe({
+  //     next: (data: Expense)=>{
+  //       this.newExpense = new Expense();
+  //     },
+  //     error: (err : any)=>{
+  //       console.error('Error loading expense list:');
+  //       console.error(err);
+  //     }
+  //   });
+  // }
+
+
 
 
 }

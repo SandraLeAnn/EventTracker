@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `expense` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(200) NULL,
   `description` VARCHAR(200) NULL,
-  `date` DATETIME NULL,
+  `date` VARCHAR(200) NULL,
   `image_url` VARCHAR(45) NULL,
   `price` DOUBLE NULL,
   `location` VARCHAR(45) NULL,
@@ -94,10 +94,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fishingtriptrackerdb`;
-INSERT INTO `trip` (`id`, `name`, `description`, `location`, `total_price`, `start_date`, `end_date`, `image_url`, `active`) VALUES (1, 'New Zealand Fishing Trip', 'I had an amazing time and caught so many rainbow trout', 'Auckland, NZ', 15000, NULL, NULL, NULL, 1);
-INSERT INTO `trip` (`id`, `name`, `description`, `location`, `total_price`, `start_date`, `end_date`, `image_url`, `active`) VALUES (2, 'British Columbia Exploration', 'Had fun in Canada', 'Vancouver, CA', 12000, NULL, NULL, NULL, 1);
-INSERT INTO `trip` (`id`, `name`, `description`, `location`, `total_price`, `start_date`, `end_date`, `image_url`, `active`) VALUES (3, 'Norwegian Excursion', 'Whales! Lots of whales and some climbing adventures', 'Tromso, NO', 25000, NULL, NULL, NULL, 1);
-INSERT INTO `trip` (`id`, `name`, `description`, `location`, `total_price`, `start_date`, `end_date`, `image_url`, `active`) VALUES (4, 'Ireland Adventure', 'Castles and knightly adventures!', 'Tipperary, IE', 10000, NULL, NULL, NULL, 1);
+INSERT INTO `trip` (`id`, `name`, `description`, `location`, `total_price`, `start_date`, `end_date`, `image_url`, `active`) VALUES (1, 'New Zealand Fishing Trip', 'I had an amazing time and caught so many rainbow trout', 'Auckland, NZ', 15000, '01/25/23', '02/04/23', 'https://fishingbooker.com/blog/media/2018-11-08-ben-kepka-Haast-River-1200x900.jpg', 1);
+INSERT INTO `trip` (`id`, `name`, `description`, `location`, `total_price`, `start_date`, `end_date`, `image_url`, `active`) VALUES (2, 'British Columbia Exploration', 'Had fun in Canada', 'Vancouver, CA', 12000, '06/22/20', '08/01/20', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgDeduVU7zVua5L9j-ALiVA7wWhOc_zEss_w&usqp=CAU', 1);
+INSERT INTO `trip` (`id`, `name`, `description`, `location`, `total_price`, `start_date`, `end_date`, `image_url`, `active`) VALUES (3, 'Norwegian Excursion', 'Whales! Lots of whales and some climbing adventures', 'Tromso, NO', 25000, '12/25/21', '01/14/22', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_GE3b_99IlmxUuld8RE6S08tEaDXF1Eu5N5ZIYbO_&s', 1);
+INSERT INTO `trip` (`id`, `name`, `description`, `location`, `total_price`, `start_date`, `end_date`, `image_url`, `active`) VALUES (4, 'Ireland Adventure', 'Castles and knightly adventures!', 'Tipperary, IE', 10000, '04/19/20', '05/14/20', 'https://s1.it.atcdn.net/wp-content/uploads/2017/01/Fly-fishing-Q-4385-800x600.jpg', 1);
 
 COMMIT;
 
@@ -107,7 +107,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fishingtriptrackerdb`;
-INSERT INTO `expense` (`id`, `name`, `description`, `date`, `image_url`, `price`, `location`, `trip_id`, `active`) VALUES (1, 'Guided Rafting Fishing Trip', 'so much fun', NULL, NULL, 1500, NULL, 1, 1);
+INSERT INTO `expense` (`id`, `name`, `description`, `date`, `image_url`, `price`, `location`, `trip_id`, `active`) VALUES (1, 'Guided Rafting Fishing Trip', 'so much fun', 'August', NULL, 1500, NULL, 1, 1);
 
 COMMIT;
 

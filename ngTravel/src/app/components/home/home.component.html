@@ -8,10 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
   </head>
-  <body>
+  <body class="text-info bg-secondary">
+<br>
 
-
-<h1>Travel Center</h1>
+<h1 class="text-info bg-secondary rounded-3">Travel Center</h1>
+<br>
 <form >
 
 
@@ -20,7 +21,7 @@
   <!-- ------------   DISPLAY TRIPS ----------------- -->
 
 
-<div *ngFor="let trip of trips" >
+<div *ngFor="let trip of trips" class="position-relative py- px-4 p-3 text-success-emphasis bg-success border border-info rounded-3">
   <div *ngIf="trip.active == 1">
 
   <li>  <button type="button" class="btn btn-info" (click)="showTrip(trip.id)">{{trip.name}}</button></li>
@@ -31,34 +32,33 @@
     <li>{{selected.totalPrice}}</li>
     <li>{{selected.startDate}}</li>
     <li>{{selected.endDate}}</li>
-    <li ><img [src]="selected.image"></li>
-
-
+    <li><img [src]="selected.image"></li>
     <form>
 
       <!-- ------------   DISPLAY EXPENSES ----------------- -->
 
 
-      <div *ngFor="let expense of tripExpenses">
+      <!-- <div *ngFor="let expense of tripExpenses">
 
               <button type="button" class="btn btn-info" (click)="showExpenses(expense.id);displayExpense=true; selectThisExpense(expense)">{{expense.name}}</button>
 
-              <div *ngIf="displayExpense ==true && selectedExpense && selectedExpense.active == 1 && selectedExpense.name == expense.name">
+              <div >
 
 
-                <li>{{selectedExpense.location}}</li>
-                <li>{{selectedExpense.description}}</li>
-                <li>{{selectedExpense.price}}</li>
+                <li>{{expense.location}}</li>
+                <li>{{expense.description}}</li>
+                <li>{{expense.price}}</li>
 
-                <li ><img [src]="selectedExpense.image"></li>
+                <li ><img [src]="expense.image"></li>
 
+                <button type="button" class="btn btn-info" >Delete {{expense.name}}</button>
 
                </div>
 
 
 
 
-            </div>
+            </div> -->
 
 
             </form>
@@ -68,20 +68,24 @@
     <button type="submit" class="btn btn-warning" (click)="displayUpdate=true">Update {{selected.name}}</button>
 
 
-      <button type="submit" class="btn btn-warning" (click)="displayExpenseForm=true">Click to Create a New Expense for {{selected.name}}</button>
+      <!-- <button type="submit" class="btn btn-warning" (click)="displayExpenseForm=true">Click to Create a New Expense for {{selected.name}}</button> -->
 
 
     <form >
 
 
+<br>
+
+       <!-- ---------------------  CREATE NEW EXPENSE FORM ----------------   -->
+
       <div class="createDiv" *ngIf="displayExpenseForm">
-        <h1>Create new Expense</h1>
+        <h1>Create New Expense</h1>
 
         <form>
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="name">Name</label>
-              <input type="text" class="form-control" name="name" placeholder="Name your trip!" [(ngModel)]="newTrip.name">
+              <input type="text" class="form-control" name="name" placeholder="Name of your expense?" [(ngModel)]="newExpense.name">
             </div>
           </div>
 
@@ -90,7 +94,7 @@
           <div class="form-row">
           <div class="form-group col-md-4">
             <label for="location">Location</label>
-            <input type="text" class="form-control" name="location" placeholder="Location" [(ngModel)]="newTrip.location">
+            <input type="text" class="form-control" name="location" placeholder="Location?" [(ngModel)]="newExpense.location">
           </div>
         </div>
 
@@ -99,36 +103,21 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="description">Describe Your Trip</label>
-              <textarea class="form-control" name="description" rows="3" [(ngModel)]="newTrip.description"></textarea>
+              <textarea class="form-control" name="description" rows="3" [(ngModel)]="newExpense.description"></textarea>
             </div>
           </div>
           <br>
-
-          <div class="form-group col-md-2">
-            <label for="totalPrice">Cost of trip?</label>
-            <input type="text" class="form-control" name="totalPrice" placeholder="$"[(ngModel)]="newTrip.totalPrice">
-          </div>
-
-
           <div class="form-row">
-            <div class="form-group">
-              <label for="startDate">Start Date</label>
-              <input type="date" class="form-control" name="startDate" [(ngModel)]="newTrip.startDate">
-            </div>
-                <br>
-                <br>
-                <br>
-              <div class="form-group">
-                <label for="endDate">End Date</label>
-                <input type="date" class="form-control" name="endDate" [(ngModel)]="newTrip.endDate">
-              </div>
-
+          <div class="form-group col-md-2">
+            <label for="price">Cost?</label>
+            <input type="text" class="form-control" name="price" placeholder="$"[(ngModel)]="newExpense.price">
           </div>
+        </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="image">Image Address URL</label>
-              <input type="text" class="form-control" name="image" [(ngModel)]="newTrip.image">
+              <input type="text" class="form-control" name="image" [(ngModel)]="newExpense.image">
             </div>
           </div>
 
@@ -143,9 +132,9 @@
           </div> -->
 
 
-                      <!-- ------------   submit Expense BUTTON ----------------- -->
+                      <!-- ------------   SUBMIT EXPENSE BUTTON ----------------- -->
 
-          <button type="submit" class="btn btn-primary" (click)=" displayExpenseForm=false ">Create Trip</button>
+          <button type="submit" class="btn btn-primary" (click)=" displayExpenseForm=false ">Create Expense</button>
         </form>
 
       </div>
@@ -166,7 +155,7 @@
                     <!-- ------------   DISABLE TRIP BUTTON ----------------- -->
 
 
-        <button type="submit" class="btn btn-danger" (click)="disableTrip(selected.id, selected)">Delete Trip</button>
+        <button type="submit" class="btn btn-danger bg-danger.bg-gradient" (click)="disableTrip(selected.id, selected)">Delete Trip</button>
 
       </form>
       <br>
@@ -224,6 +213,7 @@
               <br>
               <br>
               <br>
+              <br>
             <div class="form-group">
               <label for="endDate">End Date</label>
               <input type="date" class="form-control" name="endDate" placeholder="{{selected.endDate}}" [(ngModel)]="selected.endDate">
@@ -251,9 +241,9 @@
 
                      <!-- ------------   SUBMIT UPDATE TRIP FORM ----------------- -->
 
-        <button type="submit" class="btn btn-success" (click)="updateTrip(selected, selected.id); displayUpdate=false ">Update Trip</button>
+        <button type="submit" class="btn btn-primary" (click)="updateTrip(selected, selected.id); displayUpdate=false ">Update Trip</button>
       </form>
-
+<br>
     </div>
 
 
@@ -262,8 +252,8 @@
 </div>
 </div>
 </form>
-
 <br>
+
 <div>
   <button type="submit" class="btn btn-warning" (click)="display=true">Click to Create a New Trip</button>
 
@@ -346,7 +336,7 @@
 
                 <!-- ------------   CREATE TRIP BUTTON ----------------- -->
 
-    <button type="submit" class="btn btn-primary" (click)="addTrip(newTrip); display=false ">Create Expense</button>
+    <button type="submit" class="btn btn-primary" (click)="addTrip(newTrip); display=false ">Create Trip</button>
   </form>
 
 </div>
