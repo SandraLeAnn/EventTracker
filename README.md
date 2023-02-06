@@ -49,6 +49,8 @@ This project tracks fishing and travel experiences across the globe. A user has 
 -   REST
 -   MySQL
 -   Repositories
+-   Typescript
+-   Angular
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -56,7 +58,7 @@ This project tracks fishing and travel experiences across the globe. A user has 
 
 <p>
 The event tracker I created is specific to tracking a users fishing/travel habits and expenses associated with it.
-This event tracker uses repositories in combination with services to avoid needing to used jpql queries in order to find data within the database. I implemented optional to locate an object by id. Which was then used in various crud operations for each entity. I used json in my postman to test the database connection and crud operations across all entities. While testing mapping with postman I had to use json ignore within my entities in order to prevent serialization. At this time the event tracker is successfully preforming full crud.
+This event tracker uses repositories in combination with services to avoid needing to used jpql queries in order to find data within the database. I implemented optional to locate an object by id. Which was then used in various crud operations for each entity. I used json in my postman to test the database connection and crud operations across all entities. While testing mapping with postman I had to use json ignore within my entities in order to prevent serialization. I added a front end to my project using angular that allows the user to add, update and delete a trip from their list of trips. The user is also able to add photo of their adventures add display them in the program under their trips. At this time the event tracker is successfully preforming full crud.
 </P>
 
 | HTTP Verb | URI                  | Request Body | Response Body | Purpose |
@@ -80,6 +82,7 @@ This event tracker uses repositories in combination with services to avoid needi
 <p>
 This project has helped me gain a better understanding of repositories and the how to use repositories in combination with services. Using postman to test my mapping connection helped me recognize errors within my code and where to fix them. Using postman for this project allowed my to gain more experience using it and testing data using json requests to send and receive data to the database.
 As this project progresses I have been able to create a javascript frontend that has helped me gain a better understanding of javascript and how to implement it in my program.
+Adding angular to my project proved to actually be a lot of fun. I found it much easier to understand and implement than javascript. Implementing angular in this event tracker helped me to gain a better understanding of how to use angular and it's parts like: components, services, models, and pipes. 
 </p>
 
 
