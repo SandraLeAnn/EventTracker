@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.trips.entities.Trip;
 import com.skilldistillery.trips.services.TripsServiceImpl;
-
+@CrossOrigin({"*", "http://localhost:8084"})
 @RestController
 @RequestMapping("api")
 public class TripsController {
@@ -80,7 +81,7 @@ public class TripsController {
 		
 	}
 	
-	@PutMapping("trip/delete/{id}")
+	@PutMapping("trips/delete/{id}")
 	public boolean disableTrip(@PathVariable("id") Integer tripId, @RequestBody Trip trip, HttpServletResponse resp) {
 		boolean deleted = false;
 		try {

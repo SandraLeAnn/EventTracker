@@ -1,0 +1,363 @@
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+
+
+<h1>Travel Center</h1>
+<form >
+
+
+
+
+  <!-- ------------   DISPLAY TRIPS ----------------- -->
+
+
+<div *ngFor="let trip of trips" >
+  <div *ngIf="trip.active == 1">
+
+  <li>  <button type="button" class="btn btn-info" (click)="showTrip(trip.id)">{{trip.name}}</button></li>
+  <br>
+  <div *ngIf="selected && selected.name == trip.name">
+    <li>{{selected.location}}</li>
+    <li>{{selected.description}}</li>
+    <li>{{selected.totalPrice}}</li>
+    <li>{{selected.startDate}}</li>
+    <li>{{selected.endDate}}</li>
+    <li ><img [src]="selected.image"></li>
+
+
+    <form>
+
+      <!-- ------------   DISPLAY EXPENSES ----------------- -->
+
+
+      <div *ngFor="let expense of tripExpenses">
+
+              <button type="button" class="btn btn-info" (click)="showExpenses(expense.id);displayExpense=true; selectThisExpense(expense)">{{expense.name}}</button>
+
+              <div *ngIf="displayExpense ==true && selectedExpense && selectedExpense.active == 1 && selectedExpense.name == expense.name">
+
+
+                <li>{{selectedExpense.location}}</li>
+                <li>{{selectedExpense.description}}</li>
+                <li>{{selectedExpense.price}}</li>
+
+                <li ><img [src]="selectedExpense.image"></li>
+
+
+               </div>
+
+
+
+
+            </div>
+
+
+            </form>
+
+            <!-- ------------    TRIP BUTTONs ----------------- -->
+
+    <button type="submit" class="btn btn-warning" (click)="displayUpdate=true">Update {{selected.name}}</button>
+
+
+      <button type="submit" class="btn btn-warning" (click)="displayExpenseForm=true">Click to Create a New Expense for {{selected.name}}</button>
+
+
+    <form >
+
+
+      <div class="createDiv" *ngIf="displayExpenseForm">
+        <h1>Create new Expense</h1>
+
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" placeholder="Name your trip!" [(ngModel)]="newTrip.name">
+            </div>
+          </div>
+
+          <br>
+
+          <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" name="location" placeholder="Location" [(ngModel)]="newTrip.location">
+          </div>
+        </div>
+
+          <br>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="description">Describe Your Trip</label>
+              <textarea class="form-control" name="description" rows="3" [(ngModel)]="newTrip.description"></textarea>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group col-md-2">
+            <label for="totalPrice">Cost of trip?</label>
+            <input type="text" class="form-control" name="totalPrice" placeholder="$"[(ngModel)]="newTrip.totalPrice">
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="startDate">Start Date</label>
+              <input type="date" class="form-control" name="startDate" [(ngModel)]="newTrip.startDate">
+            </div>
+                <br>
+                <br>
+                <br>
+              <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input type="date" class="form-control" name="endDate" [(ngModel)]="newTrip.endDate">
+              </div>
+
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="image">Image Address URL</label>
+              <input type="text" class="form-control" name="image" [(ngModel)]="newTrip.image">
+            </div>
+          </div>
+
+
+          <!-- <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>
+            </div>
+          </div> -->
+
+
+                      <!-- ------------   submit Expense BUTTON ----------------- -->
+
+          <button type="submit" class="btn btn-primary" (click)=" displayExpenseForm=false ">Create Trip</button>
+        </form>
+
+      </div>
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+      <form>
+                    <!-- ------------   DISABLE TRIP BUTTON ----------------- -->
+
+
+        <button type="submit" class="btn btn-danger" (click)="disableTrip(selected.id, selected)">Delete Trip</button>
+
+      </form>
+      <br>
+
+  </form>
+  </div>
+
+<br>
+
+
+            <!-- ------------   UPDATE TRIP FORM ----------------- -->
+
+  <div class="updateForm">
+    <div class="createDiv" *ngIf="displayUpdate && selected && selected.name == trip.name">
+      <h1>Update Trip Below</h1>
+
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="{{selected.name}}" [(ngModel)]="selected.name">
+          </div>
+        </div>
+
+        <br>
+
+        <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="location">Location</label>
+          <input type="text" class="form-control" name="location" placeholder="{{selected.location}}" [(ngModel)]="selected.location">
+        </div>
+      </div>
+
+        <br>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="description">Describe Your Trip</label>
+            <textarea class="form-control" name="description" placeholder="{{selected.description}}" rows="3" [(ngModel)]="selected.description"></textarea>
+          </div>
+        </div>
+        <br>
+
+        <div class="form-group col-md-2">
+          <label for="totalPrice">Cost of trip?</label>
+          <input type="text" class="form-control" name="totalPrice" placeholder="{{selected.totalPrice}}"[(ngModel)]="selected.totalPrice">
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" class="form-control" name="startDate" placeholder="{{selected.startDate}}" [(ngModel)]="selected.startDate">
+          </div>
+              <br>
+              <br>
+              <br>
+            <div class="form-group">
+              <label for="endDate">End Date</label>
+              <input type="date" class="form-control" name="endDate" placeholder="{{selected.endDate}}" [(ngModel)]="selected.endDate">
+            </div>
+
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="image">Image Address URL</label>
+            <input type="text" class="form-control" name="image" [(ngModel)]="selected.image">
+          </div>
+        </div>
+
+
+        <!-- <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div> -->
+
+
+                     <!-- ------------   SUBMIT UPDATE TRIP FORM ----------------- -->
+
+        <button type="submit" class="btn btn-success" (click)="updateTrip(selected, selected.id); displayUpdate=false ">Update Trip</button>
+      </form>
+
+    </div>
+
+
+  </div>
+
+</div>
+</div>
+</form>
+
+<br>
+<div>
+  <button type="submit" class="btn btn-warning" (click)="display=true">Click to Create a New Trip</button>
+
+</div>
+
+
+
+            <!-- ------------   CREATE TRIP FORM ----------------- -->
+
+
+
+<div class="createDiv" *ngIf="display">
+  <h1>Create a new trip below!</h1>
+
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Name your trip!" [(ngModel)]="newTrip.name">
+      </div>
+    </div>
+
+    <br>
+
+    <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="location">Location</label>
+      <input type="text" class="form-control" name="location" placeholder="Location" [(ngModel)]="newTrip.location">
+    </div>
+  </div>
+
+    <br>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="description">Describe Your Trip</label>
+        <textarea class="form-control" name="description" rows="3" [(ngModel)]="newTrip.description"></textarea>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group col-md-2">
+      <label for="totalPrice">Cost of trip?</label>
+      <input type="text" class="form-control" name="totalPrice" placeholder="$"[(ngModel)]="newTrip.totalPrice">
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" class="form-control" name="startDate" [(ngModel)]="newTrip.startDate">
+      </div>
+          <br>
+          <br>
+          <br>
+        <div class="form-group">
+          <label for="endDate">End Date</label>
+          <input type="date" class="form-control" name="endDate" [(ngModel)]="newTrip.endDate">
+        </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="image">Image Address URL</label>
+        <input type="text" class="form-control" name="image" [(ngModel)]="newTrip.image">
+      </div>
+    </div>
+
+
+    <!-- <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Check me out
+        </label>
+      </div>
+    </div> -->
+
+
+                <!-- ------------   CREATE TRIP BUTTON ----------------- -->
+
+    <button type="submit" class="btn btn-primary" (click)="addTrip(newTrip); display=false ">Create Expense</button>
+  </form>
+
+</div>
+
+
+
+<!-- ------------------------- CREATE EXPENSE FOR A TRIP -------------------------- -->
+
+
+
+
+
+  </body>
+  </html>

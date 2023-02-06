@@ -46,6 +46,7 @@ public class TripsServiceImpl implements TripsService {
 	public Trip create(Trip trip) {
 		
 		if (trip != null) {
+			trip.setActive(true);
 			em.persist(trip);
 		}
 	
